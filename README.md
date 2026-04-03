@@ -4,7 +4,7 @@
 
 > I did this for a reason. Let us prove it.
 
-A web app that generates officially certified excuses for any action you type in.
+A fun side project / test app that generates officially certified excuses for any action you type in.
 
 Certified by the International Excuse Certification Authority (IECA). No refunds. No rebuttals.
 
