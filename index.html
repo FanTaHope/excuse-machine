@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>핑계 자판기</title>
+  <meta name="description" content="행동을 입력하면 공인된 핑계를 발급해드립니다. 국제핑계인증원(IECA) 공인." />
+  <meta name="theme-color" content="#080810" />
+  <meta property="og:title" content="핑계 자판기" />
+  <meta property="og:description" content="행동을 입력하면 공인된 핑계를 발급해드립니다. 국제핑계인증원(IECA) 공인." />
+  <meta property="og:type" content="website" />
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="핑계 자판기" />
+  <meta name="twitter:description" content="행동을 입력하면 공인된 핑계를 발급해드립니다." />
+  <link href="https://fonts.googleapis.com/css2?family=Black+Han+Sans&family=Noto+Sans+KR:wght@400;500;700&family=Noto+Sans+SC:wght@400;500;700&family=Noto+Sans+JP:wght@400;500;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+  <div class="bg-glow"></div>
+
+  <div class="page-layout">
+
+    <!-- 왼쪽 배너: 가짜 보증 배너 -->
+    <aside class="side-banner side-left">
+      <div class="banner-inner">
+        <div class="banner-seal-icon">🏛️</div>
+        <div class="banner-title">국제핑계<br>인증원</div>
+        <div class="banner-subtitle">IECA</div>
+        <div class="banner-divider"></div>
+        <div class="banner-body">
+          본 기관은 핑계 자판기에서 발급되는 모든 이유에 대해 공식 인증을 검토할 의향이 있을 가능성이 없지 않음을 선언합니다.
+        </div>
+        <div class="banner-divider"></div>
+        <div class="banner-stamp">인증번호 없음<br>유효기간 영구</div>
+        <div class="banner-badge">CERTIFIED ✓</div>
+      </div>
+    </aside>
+
+    <!-- 기존 콘텐츠 전체 -->
+    <main class="main-content">
+      <header class="header">
+        <div class="lang-switcher">
+          <button class="lang-btn active" onclick="setLang('ko')" data-lang="ko">🇰🇷 한국어</button>
+          <button class="lang-btn" onclick="setLang('en')" data-lang="en">🇺🇸 EN</button>
+          <button class="lang-btn" onclick="setLang('ja')" data-lang="ja">🇯🇵 JP</button>
+          <button class="lang-btn" onclick="setLang('zh')" data-lang="zh">🇨🇳 中文</button>
+        </div>
+        <div class="badge"><span class="badge-dot"></span>CERTIFIED EXCUSE MACHINE</div>
+        <div class="logo"><span class="logo-icon">🎰</span><span class="logo-text">핑계 자판기</span></div>
+        <p class="headline">내가 이러는 데는 다 이유가 있어.<br>우리가 증명해줄게.</p>
+        <p class="sub">행동을 입력하면 이유를 드립니다.</p>
+        <div class="tagline-wrap">
+          <p class="tagline-random" id="taglineRandom"></p>
+          <p class="tagline-fixed">개발자가 확실히 보증합니다. 반박 시 무지개반사~🌈</p>
+        </div>
+        <div class="lang-beta-warning" id="langBetaWarning" style="display:none;">
+          <span id="langBetaText"></span>
+        </div>
+      </header>
+
+      <section class="input-section">
+        <div class="input-wrapper">
+          <input
+            type="text"
+            id="actionInput"
+            placeholder="행동을 입력하세요 (예: 운동, 공부, 출근)"
+            maxlength="30"
+            autocomplete="off"
+          />
+          <span class="char-count"><span id="charCount">0</span>/30</span>
+        </div>
+        <div class="btn-group">
+          <button class="btn btn-cant" id="btnCant" onclick="generate('cant')" disabled>
+            <span>😮</span> 못 하는 이유 뽑기
+          </button>
+          <button class="btn btn-must" id="btnMust" onclick="generate('must')" disabled>
+            <span>💪</span> 해야 하는 이유 뽑기
+          </button>
+        </div>
+      </section>
+
+      <section class="result-area" id="resultArea">
+        <div class="card" id="resultCard">
+          <div class="card-top-line"></div>
+          <div class="card-header">
+            <span class="card-header-left">🎰 EXCUSE CARD</span>
+          </div>
+          <div class="card-body">
+            <p class="card-sentence">당신이 <span class="card-action" id="cardAction"></span> <span class="card-connector" id="cardConnector"></span></p>
+            <div class="card-reason-wrap">
+              <div class="card-reason" id="cardReason"></div>
+            </div>
+            <div class="card-end">입니다.</div>
+          </div>
+          <hr class="card-divider" />
+          <div class="card-stamp-area">
+            <div class="card-stamp" id="cardStamp"></div>
+            <div class="card-stamp-seal-blue">N.O.P.E<br>인증</div>
+            <div class="card-stamp-seal">검증<br>완료</div>
+          </div>
+        </div>
+
+        <div class="action-buttons">
+          <button class="btn-action" onclick="reroll()">🔄 다시 뽑기</button>
+          <button class="btn-action" onclick="resetInput()">✏️ 다른 행동</button>
+          <button class="btn-action" onclick="saveAsImage()">💾 사진 저장</button>
+          <button class="btn-action" onclick="shareCard()">📤 공유하기</button>
+        </div>
+        <p class="capture-hint">이 화면을 캡처해서 증거로 제출하세요.</p>
+      </section>
+
+      <footer class="footer">
+        핑계 자판기 &copy; 2026 | 본 서비스의 결과는 법적 효력이 있다고 하면 있는겁니다. 아마도.
+      </footer>
+    </main>
+
+    <!-- 오른쪽 배너: 가짜 광고 배너 -->
+    <aside class="side-banner side-right">
+      <div class="banner-inner banner-ad">
+        <div class="banner-ad-tag">AD</div>
+        <div class="banner-ad-icon">🚀</div>
+        <div class="banner-ad-headline">광고주를<br>구합니다</div>
+        <div class="banner-divider"></div>
+        <div class="banner-body">
+          광고를 주시면 개발자가 하늘을 날아다닐 텐데요.
+          <br><br>
+          현재 개발자는 날지 못하고 있습니다.
+          <br><br>
+          이 공간은 당신의 브랜드가 들어올 자리입니다.
+          <br><br>
+          아직 아무도 안 왔습니다.
+        </div>
+        <div class="banner-divider"></div>
+        <div class="banner-cta" onclick="copyMail()">📋 문의 메일 복사하기</div>
+      </div>
+    </aside>
+
+  </div>
+
+  <div class="toast" id="toast"></div>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
+  <script src="i18n.js"></script>
+  <script src="data.js"></script>
+  <script src="script.js"></script>
+</body>
+</html>
