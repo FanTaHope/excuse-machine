@@ -26,8 +26,6 @@ Certified by the International Excuse Certification Authority (IECA). No refunds
 - 🌏 **4 Languages** — Korean, English, Japanese, Chinese
 - 🎴 **Excuse Cards** — Officially stamped and sealed, obviously
 - 📸 **Save / Share** — Download as image or copy to clipboard
-- 🔒 **Safety Filter** — Built-in protection for harmful inputs
-- 💾 **Remembers Language** — Your language choice persists across sessions
 
 ## Tech Stack
 
