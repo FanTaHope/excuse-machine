@@ -39,6 +39,10 @@ cd excuse-machine
 npx http-server -p 3000
 ```
 
+## Feedback
+
+This is still a test build — some lines might feel awkward or unfunny. If you spot anything weird or have better ideas, drop a comment in [Discussions](https://github.com/FanTaHope/excuse-machine/discussions). All feedback welcome.
+
 ## License
 
 All Rights Reserved.

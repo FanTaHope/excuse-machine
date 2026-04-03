@@ -41,6 +41,10 @@ cd excuse-machine
 npx http-server -p 3000
 ```
 
+## 피드백
+
+아직 테스트 단계라 문맥이 어색하거나 노잼인 멘트들이 있을 수 있습니다. 발견하시면 [Discussions](https://github.com/FanTaHope/excuse-machine/discussions)에 댓글로 알려주세요. 더 웃긴 아이디어도 환영합니다.
+
 ## 라이선스
 
 All Rights Reserved.
